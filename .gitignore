@@ -1,0 +1,30 @@
+# virtualenv
+.venv
+
+# Packaging
+build
+dist
+*.egg-info
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode
+
+# Mac Os
+.DS_Store
+
+# Temp files
+*~
+.~lock*
+
+# Swap files
+*.sw[po]
+*.part
+
+# Local files only
+registry.txt
+todo.rst
+*.mp4
