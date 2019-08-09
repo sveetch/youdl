@@ -3,25 +3,28 @@ VENV_PATH=.venv
 PIP=$(VENV_PATH)/bin/pip
 YOUTUBEDL=$(VENV_PATH)/bin/youtube-dl
 STORAGE=/media/thenonda/Elements/documentaires/
-VERSION=0.1.0
+VERSION=0.2.0
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
 	@echo "  install             -- to install this project with virtualenv and Pip"
-	@echo ""
+	@echo
 	@echo "  clean               -- to clean EVERYTHING (Warning)"
 	@echo "  clean-pycache       -- to remove all __pycache__, this is recursive from current directory"
 	@echo "  clean-install       -- to clean Python side installation"
-	@echo ""
+	@echo
 	@echo "  get                 -- to download video from given url as argument (add 'url=myurl' at the end)"
-	@echo "  scan                -- to given url to ensure video can extracted (add 'url=myurl' at the end)"
-	@echo ""
+	@echo "  scan                -- to scan given url to ensure video can extracted (add 'url=myurl' at the end)"
+	@echo "  match               -- to download video from given url if it contain given title pattern (add 'title=your_pattern' 'url=your_url' at the end)"
+	@echo
 	@echo "  update              -- to quickly update youtube-dl package"
-	@echo ""
+	@echo
 	@echo "  registry            -- to make registry of saved files from storage $(STORAGE)"
-	@echo ""
+	@echo
 	@echo "  version             -- to printout this project version"
+	@echo
+	@echo "  man                 -- to printout youtube-dl help"
 	@echo
 
 clean-pycache:
@@ -55,6 +58,10 @@ scan:
 	$(YOUTUBEDL) --verbose --get-url $(url)
 .PHONY: scan
 
+match:
+	$(YOUTUBEDL) --match-title $(title) $(url)
+.PHONY: match
+
 update:
 	$(PIP) install --upgrade youtube-dl
 .PHONY: install
@@ -62,6 +69,10 @@ update:
 registry:
 	@tree -h $(STORAGE) > registry.txt
 .PHONY: registry
+
+man:
+	$(YOUTUBEDL) --help
+.PHONY: man
 
 version:
 	@echo "youdl version $(VERSION)"
