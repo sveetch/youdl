@@ -17,6 +17,8 @@ help:
 	@echo "  get                 -- to download video from given url as argument (add 'url=myurl' at the end)"
 	@echo "  scan                -- to given url to ensure video can extracted (add 'url=myurl' at the end)"
 	@echo ""
+	@echo "  update              -- to quickly update youtube-dl package"
+	@echo ""
 	@echo "  registry            -- to make registry of saved files from storage $(STORAGE)"
 	@echo ""
 	@echo "  version             -- to printout this project version"
