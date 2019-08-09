@@ -1,6 +1,6 @@
 .. _youtube-dl: https://github.com/ytdl-org/youtube-dl/
 
-This is a simple project to install youtube-dl with some useful Makefile
+This is a simple project to install `youtube-dl`_ with some useful Makefile
 commands for quick usage.
 
 Requires
