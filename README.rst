@@ -36,6 +36,19 @@ Get a video from it's webpage url: ::
 
     make get url=the_webpage_video_url
 
+Playlist download
+--------------
+
+Also you can download all video from a playlist: ::
+
+    make getlist url=the_webpage_video_url
+
+Every video will be saved in a directory dedicated to the playlist, all
+filename are indexed (from playlist index) and an ``history.txt`` is written.
+
+The history file register every allready saved video so you can stop the
+download anytime and restart it further without to re-download everything.
+
 Scanning page
 -------------
 

@@ -2,8 +2,8 @@ PYTHON_INTERPRETER=python3
 VENV_PATH=.venv
 PIP=$(VENV_PATH)/bin/pip
 YOUTUBEDL=$(VENV_PATH)/bin/youtube-dl
-STORAGE=/media/thenonda/Elements/documentaires/
-VERSION=0.2.0
+STORAGE=/media/thenonda/Elements/
+VERSION=0.3.0
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -15,6 +15,7 @@ help:
 	@echo "  clean-install       -- to clean Python side installation"
 	@echo
 	@echo "  get                 -- to download video from given url as argument (add 'url=myurl' at the end)"
+	@echo "  getlist             -- to download all video given playlist url, each video name is indexed and all are saved to a dedicated file (add 'url=myurl' at the end)"
 	@echo "  scan                -- to scan given url to ensure video can extracted (add 'url=myurl' at the end)"
 	@echo "  match               -- to download video from given url if it contain given title pattern (add 'title=your_pattern' 'url=your_url' at the end)"
 	@echo
@@ -52,6 +53,10 @@ install: venv
 
 get:
 	$(YOUTUBEDL) $(url)
+.PHONY: get
+
+getlist:
+	$(YOUTUBEDL) --download-archive history.txt --recode-video mp4 --output '%(playlist)s/%(playlist_index)s_%(title)s.%(ext)s' --restrict-filenames $(url)
 .PHONY: get
 
 scan:
