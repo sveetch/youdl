@@ -52,7 +52,7 @@ install: venv
 .PHONY: install
 
 get:
-	$(YOUTUBEDL) $(url)
+	$(YOUTUBEDL) --download-archive history.txt --recode-video mp4 --restrict-filenames $(url)
 .PHONY: get
 
 getlist:
