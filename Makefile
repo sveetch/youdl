@@ -3,7 +3,7 @@ VENV_PATH=.venv
 PIP=$(VENV_PATH)/bin/pip
 YOUTUBEDL=$(VENV_PATH)/bin/youtube-dl
 STORAGE=/media/thenonda/Elements/
-VERSION=0.3.0
+VERSION=0.3.1
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
