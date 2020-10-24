@@ -3,7 +3,7 @@ VENV_PATH=.venv
 PIP=$(VENV_PATH)/bin/pip
 YOUTUBEDL=$(VENV_PATH)/bin/youtube-dl
 STORAGE=/media/thenonda/Elements/
-VERSION=0.3.1
+VERSION=0.3.2
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -23,7 +23,7 @@ help:
 	@echo
 	@echo "  registry            -- to make registry of saved files from storage $(STORAGE)"
 	@echo
-	@echo "  version             -- to printout this project version"
+	@echo "  version             -- to printout this project and youtube-dl versions"
 	@echo
 	@echo "  man                 -- to printout youtube-dl help"
 	@echo
@@ -57,7 +57,7 @@ get:
 
 getlist:
 	$(YOUTUBEDL) --download-archive history.txt --recode-video mp4 --output '%(playlist)s/%(playlist_index)s_%(title)s.%(ext)s' --restrict-filenames $(url)
-.PHONY: get
+.PHONY: getlist
 
 scan:
 	$(YOUTUBEDL) --verbose --get-url $(url)
@@ -80,5 +80,6 @@ man:
 .PHONY: man
 
 version:
-	@echo "youdl version $(VERSION)"
+	@echo "youdl=$(VERSION)";
+	@echo "youtube-dl=`$(YOUTUBEDL) --version`";
 .PHONY: version
